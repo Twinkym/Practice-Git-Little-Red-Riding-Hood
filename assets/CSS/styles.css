@@ -19,6 +19,11 @@ body {
     color: var(--text);
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+    gap: 1rem;    
     min-height: 100vh;
 }
 
@@ -119,7 +124,23 @@ header {
 .next-stories {
     background: var(--accent);
     color: var(--text);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.8rem 1.5rem;
     border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, padding 0.3s, font-weight 0.3s, color 0.3s;
+    transition-timing-function: ease-in-out;
+    box-shadow: 0 2px 4px var(--shadow);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+
+}
+
+.next-stories:hover {
+    background: var(--primary);
     padding: 0.8rem 1.5rem;
     font-weight: 600;
     cursor: pointer;
@@ -128,15 +149,36 @@ header {
 }
 
 footer {
-    background: var(--secondary);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;   
+    background: var(--primary);
     color: #fff;
+    box-shadow: 10px -3px 5px var(--shadow);
     text-align: center;
     padding: 1rem;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;    
     margin-top: auto;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
 }
 
 footer .socials img {
-    width: 24px;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
     margin: 0 10px;
     filter: brightness(1) invert(0);
     transition: transform 0.3s;

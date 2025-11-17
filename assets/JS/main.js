@@ -1,9 +1,8 @@
-const slides = document.querySelectorAll(".slides");
+const slides = document.querySelectorAll(".slide");
 const prev = document.querySelector(".prev");
 const next = document.querySelector(".next");
 const dotsContainer = document.getElementById("dots");
 let index = 0;
-let interval;
 
 // Crear puntos diámicamente
 slides.forEach((_, i) => {
@@ -15,33 +14,39 @@ slides.forEach((_, i) => {
 const dots = dotsContainer.querySelectorAll("button");
 
 function showSlide(i) {
-    slides.forEach(slide => slide.classList.remove("active"));
-    dots.forEach(dot => dot.classList.remove("active"));
+    slides.forEach(s => s.classList.remove("active"));
+    dots.forEach(d => d.classList.remove("active"));
     slides[i].classList.add("active");
     dots[i].classList.add("active");
     index = i;
+}
+
+function nextSlide() {
+    index = (index + 1) % slides.length;
+    showSlide(index);
+}
+
+function prevSlide() {
+    index = (index - 1 + slides.length) % slides.length;
+    showSlide(index);
 }
 
 function startAutoSlide() {
     interval = setInterval(nextSlide, 5000);
 }
 
-function stopAutoSlide() {
-    clearInterval(interval);
-}
+// function stopAutoSlide() {
+//     clearInterval(interval);
+// }
 
 prev.addEventListener("click", () => {
-    stopAutoSlide();
-    prevSlide();
-    startAutoSlide();
+    prevSlide();    
 });
 
 next.addEventListener("click", () => {
-    stopAutoSlide();
     nextSlide();
-    startAutoSlide();
 });
 
 // Iniciar
 showSlide(0);
-startAutoSlide();
+startAutoSlide(nextSlide, 5000);
